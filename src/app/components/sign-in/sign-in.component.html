@@ -1,6 +1,23 @@
 <ng-container class="page">
   <div class="page__header">Sign in</div>
-  <div class="page__form-container">sign-in works!</div>
+  <div class="page__form-container">
+    <form #f="ngForm" class="page__form" (ngSubmit)="f.form.valid && login()">
+        <div class="page__form--input-group">
+          <label for="email" [ngClass]="{ 'text-danger': isFieldInvalid(f, 'email') }">E-mail address</label>
+          <input type="email" id="email" name="email" [(ngModel)]="loginModel.email" [ngClass]="{ 'invalid': isFieldInvalid(f, 'email') }" [pattern]="emailPattern" required>
+        </div>
+        <div class="page__form--input-group">
+          <label for="password" [ngClass]="{ 'text-danger': isFieldInvalid(f, 'password') }">Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="loginModel.password" [ngClass]="{ 'invalid': isFieldInvalid(f, 'password') }" required>
+        </div>
+
+      <div class="page__form--button-container">
+        <button type="submit" class="orm-button primary">
+          <span>Continue</span>
+        </button>
+      </div>
+    </form>
+  </div>
   <div class="page__redirect">
     Not our member yet? <a routerLink="../sign-up">Click here to create new account</a>
   </div>

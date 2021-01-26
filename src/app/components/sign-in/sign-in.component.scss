@@ -1,0 +1,29 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.page {
+  &__form {
+    width: 100%;
+    &--input-group {
+      margin-bottom: 1rem;
+      label {
+        display: block;
+        font-size: 0.8125rem;
+        margin-bottom: 0.25rem;
+      }
+      input {
+        @include formElementStyle;
+        width: 100%;
+        border: solid 1px $gray-400;
+        &.invalid {
+          border-color: $red;
+        }
+      }
+    }
+    &--button-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
