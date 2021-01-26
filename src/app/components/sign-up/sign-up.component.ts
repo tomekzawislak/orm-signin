@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { EmailPattern, FullNamePattern } from '../../constants/form-validation';
+
+export interface RegisterModel {
+  email: string;
+  password: string;
+  name: string;
+  confirmPassword: string;
+}
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
+  registerModel: RegisterModel;
+  readonly emailPattern: RegExp = EmailPattern;
+  readonly fullNamePattern: RegExp = FullNamePattern;
 
-  constructor() { }
+  constructor() {
+    this.registerModel = {
+      email: '',
+      password: '',
+      name: '',
+      confirmPassword: ''
+    };
+  }
 
-  ngOnInit(): void {
+  signUp(): void {
+
+  }
+
+  formInvalid(f: NgForm): boolean {
+    return f.submitted && f.invalid;
+  }
+
+  isFieldInvalid(f: NgForm, fieldName: string): boolean {
+    return this.formInvalid(f) && f.controls[fieldName].invalid;
   }
 
 }

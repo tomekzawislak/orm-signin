@@ -1,6 +1,74 @@
 <ng-container class="page">
   <div class="page__header">Sign up</div>
-  <div class="page__form-container">sign-up works!</div>
+  <div class="page__form-container">
+    <form #f="ngForm" class="page__form" (ngSubmit)="f.form.valid && signUp()">
+      <div class="page__form--input-group">
+        <input type="email"
+               id="email"
+               name="email"
+               placeholder="E-mail address"
+               [(ngModel)]="registerModel.email"
+               [ngClass]="{ 'invalid': isFieldInvalid(f, 'email') }"
+               [pattern]="emailPattern"
+               required>
+        <div class="error"
+             [ngClass]="{'visible': isFieldInvalid(f, 'email')}">
+          <span *ngIf="registerModel.email === ''">E-mail is required</span>
+          <span *ngIf="registerModel.email !== ''">Invalid email address</span>
+        </div>
+      </div>
+      <div class="page__form--input-group">
+        <input type="text"
+               id="name"
+               name="name"
+               placeholder="Full name"
+               [(ngModel)]="registerModel.name"
+               [ngClass]="{ 'invalid': isFieldInvalid(f, 'name') }"
+               [pattern]="fullNamePattern"
+               required>
+        <div class="error"
+             [ngClass]="{'visible': isFieldInvalid(f, 'name')}">
+          <span *ngIf="registerModel.name === ''">Name is required</span>
+          <span *ngIf="registerModel.name !== ''">Missing last name</span>
+        </div>
+      </div>
+      <div class="page__form--input-group">
+        <input type="password"
+               id="password"
+               name="password"
+               placeholder="Password"
+               [(ngModel)]="registerModel.password"
+               [ngClass]="{ 'invalid': isFieldInvalid(f, 'password') }"
+               required>
+        <div class="error"
+             [ngClass]="{'visible': isFieldInvalid(f, 'password')}">
+          <span>Password is required</span>
+        </div>
+      </div>
+      <div class="page__form--input-group">
+        <input type="password"
+               id="confirmPassword"
+               name="confirmPassword"
+               placeholder="Confirm password"
+               [(ngModel)]="registerModel.confirmPassword"
+               [pattern]="registerModel.password"
+               [ngClass]="{ 'invalid': isFieldInvalid(f, 'confirmPassword') }"
+               required>
+        <div class="error"
+             [ngClass]="{'visible': isFieldInvalid(f, 'confirmPassword')}">
+          <span *ngIf="registerModel.confirmPassword === ''">Please confirm your password</span>
+          <span *ngIf="registerModel.confirmPassword !== ''">Password doesn't match</span>
+        </div>
+      </div>
+
+      <div class="page__form--button-container">
+        <button type="submit" class="orm-button primary">
+          <span>CONTINUE</span>
+        </button>
+      </div>
+    </form>
+
+  </div>
   <div class="page__redirect">
     Already using our app? <a routerLink="../sign-in">Click here to sign in</a>
   </div>

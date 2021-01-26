@@ -3,17 +3,6 @@ $black: #000000;
 
 $red: #ff0000;
 
-$blue-50: #f4f7fa;
-$blue-100: #D6E0EA;
-$blue-200: #CBD8E5;
-$blue-300: #158ec2;
-$blue-400: #0b84b8;
-$blue-500: #017aae;
-$blue-600: #016996;
-$blue-700: #00669a;
-$blue-800: #005c90;
-$blue-900: #005286;
-
 $gray-200: #fcfcfc;
 $gray-400: #e0e0e0;
 $gray-600: #4f4f4f;
@@ -25,6 +14,7 @@ $light-blue-2: #c0d6df;
 $dark-blue-1: #4a6fa5;
 $dark-blue-2: #166088;
 
-$primary-bg: $light-blue-1;
+$primary-bg: $light-blue-2;
 $primary-text: $gray-800;
-$link: $blue-300;
+$link: $dark-blue-1;
+$link-hover: $dark-blue-2;

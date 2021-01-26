@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { EmailPattern } from '../../constants/form-validation';
 
 export interface LoginModel {
   email: string;
@@ -8,11 +10,10 @@ export interface LoginModel {
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
   loginModel: LoginModel;
-  readonly emailPattern: RegExp = new RegExp('[a-zA-Z0-9._%+-]+\@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}');
+  readonly emailPattern: RegExp = EmailPattern;
 
   constructor() {
     this.loginModel = {
@@ -21,19 +22,16 @@ export class SignInComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-  }
-
   login(): void {
 
   }
 
-  formInvalid(f: any) {
+  formInvalid(f: NgForm): boolean {
     return f.submitted && f.invalid;
   }
 
-  isFieldInvalid(f: any, fieldName: string): boolean {
-    return f.submitted && f.controls[fieldName].invalid;
+  isFieldInvalid(f: NgForm, fieldName: string): boolean {
+    return this.formInvalid(f) && f.controls[fieldName].invalid;
   }
 
 }
