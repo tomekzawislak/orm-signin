@@ -28,6 +28,10 @@ export class SignInComponent implements OnInit {
 
   }
 
+  formInvalid(f: any) {
+    return f.submitted && f.invalid;
+  }
+
   isFieldInvalid(f: any, fieldName: string): boolean {
     return f.submitted && f.controls[fieldName].invalid;
   }

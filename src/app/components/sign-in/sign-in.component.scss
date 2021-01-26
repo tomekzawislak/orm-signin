@@ -6,17 +6,29 @@
     width: 100%;
     &--input-group {
       margin-bottom: 1rem;
-      label {
-        display: block;
-        font-size: 0.8125rem;
-        margin-bottom: 0.25rem;
-      }
+      width: 100%;
       input {
         @include formElementStyle;
         width: 100%;
-        border: solid 1px $gray-400;
+        border: solid $gray-400;
+        border-width: 0 0 1px 0;
+        box-sizing: border-box;
         &.invalid {
           border-color: $red;
+        }
+        &:focus {
+          outline: none;
+          &::placeholder {
+            opacity: 0.3;
+          }
+        }
+      }
+      .error {
+        font-size: 0.75rem;
+        color: $red;
+        visibility: hidden;
+        &.visible {
+          visibility: visible;
         }
       }
     }
@@ -24,6 +36,10 @@
       width: 100%;
       display: flex;
       justify-content: center;
+      button {
+        width: 100%;
+        margin-top: 1rem;
+      }
     }
   }
 }

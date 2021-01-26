@@ -1,19 +1,39 @@
 <ng-container class="page">
-  <div class="page__header">Sign in</div>
+  <div class="page__header">Sign in <i class="fas fa-user"> </i></div>
   <div class="page__form-container">
     <form #f="ngForm" class="page__form" (ngSubmit)="f.form.valid && login()">
-        <div class="page__form--input-group">
-          <label for="email" [ngClass]="{ 'text-danger': isFieldInvalid(f, 'email') }">E-mail address</label>
-          <input type="email" id="email" name="email" [(ngModel)]="loginModel.email" [ngClass]="{ 'invalid': isFieldInvalid(f, 'email') }" [pattern]="emailPattern" required>
+        <div class="page__form--input-group" [ngClass]="{'group-invalid': formInvalid(f)}">
+          <input type="email"
+                 id="email"
+                 name="email"
+                 placeholder="E-mail address"
+                 [(ngModel)]="loginModel.email"
+                 [ngClass]="{ 'invalid': isFieldInvalid(f, 'email') }"
+                 [pattern]="emailPattern"
+                 required>
+          <div class="error"
+               [ngClass]="{'visible': isFieldInvalid(f, 'email')}">
+            <span *ngIf="loginModel.email === ''">E-mail is required</span>
+            <span *ngIf="loginModel.email !== ''">Invalid email address</span>
+          </div>
         </div>
-        <div class="page__form--input-group">
-          <label for="password" [ngClass]="{ 'text-danger': isFieldInvalid(f, 'password') }">Password</label>
-          <input type="password" id="password" name="password" [(ngModel)]="loginModel.password" [ngClass]="{ 'invalid': isFieldInvalid(f, 'password') }" required>
+        <div class="page__form--input-group" [ngClass]="{'group-invalid': formInvalid(f)}">
+          <input type="password"
+                 id="password"
+                 name="password"
+                 placeholder="Password"
+                 [(ngModel)]="loginModel.password"
+                 [ngClass]="{ 'invalid': isFieldInvalid(f, 'password') }"
+                 required>
+          <div class="error"
+               [ngClass]="{'visible': isFieldInvalid(f, 'password')}">
+            <span>Password is required</span>
+          </div>
         </div>
 
       <div class="page__form--button-container">
         <button type="submit" class="orm-button primary">
-          <span>Continue</span>
+          <span>CONTINUE</span>
         </button>
       </div>
     </form>
