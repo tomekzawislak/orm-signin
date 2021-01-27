@@ -11,46 +11,33 @@ export class ToastMessageService {
 
     constructor() { }
 
-    show(text: string, toastType: ToastMessageType): void {
-        const model = new ToastMessageModel({
-            visible: true,
-            text,
-            toastType
-        });
-
-        this.toastMessageSource.next(model);
-    }
-
     showDanger(text: string, dontClose?: boolean): void {
-        const model = new ToastMessageModel({
-            visible: true,
-            text,
-            toastType: ToastMessageType.Danger,
-            dontClose
-        });
-
-        this.toastMessageSource.next(model);
+        this.show(text, ToastMessageType.Danger, dontClose);
     }
 
     showPrimary(text: string, dontClose?: boolean): void {
-        const model = new ToastMessageModel({
-            visible: true,
-            text,
-            toastType: ToastMessageType.Primary,
-            dontClose
-        });
-
-        this.toastMessageSource.next(model);
+      this.show(text, ToastMessageType.Primary, dontClose);
     }
 
     hide(): void {
         const model = new ToastMessageModel({
-            text: '',
             visible: false,
-            toastType: this.toastMessageSource.value.toastType,
+            text: null,
+            toastType: null,
             dontClose: null
         });
 
         this.toastMessageSource.next(model);
+    }
+
+    private show(text: string, toastType: ToastMessageType, dontClose?: boolean): void {
+      const model = new ToastMessageModel({
+        visible: true,
+        text,
+        toastType,
+        dontClose
+      });
+
+      this.toastMessageSource.next(model);
     }
 }

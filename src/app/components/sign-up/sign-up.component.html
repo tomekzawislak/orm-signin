@@ -4,7 +4,8 @@
     <div class="page__form-container">
       <form #f="ngForm" class="page__form" (ngSubmit)="f.form.valid && signUp()">
         <div class="page__form--input-group">
-          <input type="email"
+          <input #inputs
+                 type="email"
                  id="email"
                  name="email"
                  placeholder="E-mail address"
@@ -19,7 +20,8 @@
           </div>
         </div>
         <div class="page__form--input-group">
-          <input type="text"
+          <input #inputs
+                 type="text"
                  id="name"
                  name="name"
                  placeholder="Full name"
@@ -34,7 +36,8 @@
           </div>
         </div>
         <div class="page__form--input-group">
-          <input type="password"
+          <input #inputs
+                 type="password"
                  id="password"
                  name="password"
                  placeholder="Password"
@@ -49,7 +52,8 @@
           </div>
         </div>
         <div class="page__form--input-group">
-          <input type="password"
+          <input #inputs
+                 type="password"
                  id="confirmPassword"
                  name="confirmPassword"
                  placeholder="Confirm password"

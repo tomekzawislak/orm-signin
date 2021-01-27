@@ -1,7 +1,7 @@
 export class ToastMessageModel implements IToastMessageModel {
     visible: boolean;
-    text: string;
-    toastType: ToastMessageType;
+    text: string | null;
+    toastType: ToastMessageType | null;
     dontClose?: boolean | null;
 
     constructor(data?: IToastMessageModel) {
@@ -17,8 +17,8 @@ export class ToastMessageModel implements IToastMessageModel {
 
 export interface IToastMessageModel {
     visible: boolean;
-    text: string;
-    toastType: ToastMessageType;
+    text: string | null;
+    toastType: ToastMessageType | null;
     dontClose?: boolean | null;
 }
 

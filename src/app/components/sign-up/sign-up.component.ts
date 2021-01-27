@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmailPattern, FullNamePattern, PasswordPattern } from '../../constants/form-validation';
 import { ToastMessageService } from '../../services/toast-message.service';
@@ -15,17 +15,24 @@ export interface RegisterModel {
   templateUrl: './sign-up.component.html',
 })
 export class SignUpComponent {
-  registerModel: RegisterModel;
+  registerModel: RegisterModel = {
+    email: '',
+    password: '',
+    name: '',
+    confirmPassword: ''
+  };
+  @ViewChild('f') f: NgForm;
+  @ViewChildren('inputs') inputs: QueryList<ElementRef>;
   readonly emailPattern: RegExp = EmailPattern;
   readonly fullNamePattern: RegExp = FullNamePattern;
   readonly passwordPattern: RegExp = PasswordPattern;
 
   constructor(private toastr: ToastMessageService) {
-    this.clearModel();
   }
 
   signUp(): void {
-    this.clearModel();
+    this.f.resetForm();
+    this.inputs.forEach(item => item.nativeElement.blur());
     this.toastr.showPrimary('Your account has been created');
   }
 
@@ -35,15 +42,6 @@ export class SignUpComponent {
 
   isFieldInvalid(f: NgForm, fieldName: string): boolean {
     return this.formInvalid(f) && f.controls[fieldName].invalid;
-  }
-
-  private clearModel(): void {
-    this.registerModel = {
-      email: '',
-      password: '',
-      name: '',
-      confirmPassword: ''
-    };
   }
 
 }
