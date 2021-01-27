@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EmailPattern, FullNamePattern } from '../../constants/form-validation';
+import { EmailPattern, FullNamePattern, PasswordPattern } from '../../constants/form-validation';
 
 export interface RegisterModel {
   email: string;
@@ -17,6 +17,7 @@ export class SignUpComponent {
   registerModel: RegisterModel;
   readonly emailPattern: RegExp = EmailPattern;
   readonly fullNamePattern: RegExp = FullNamePattern;
+  readonly passwordPattern: RegExp = PasswordPattern;
 
   constructor() {
     this.registerModel = {

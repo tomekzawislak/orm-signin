@@ -39,11 +39,13 @@
                  name="password"
                  placeholder="Password"
                  [(ngModel)]="registerModel.password"
+                 [pattern]="passwordPattern"
                  [ngClass]="{ 'invalid': isFieldInvalid(f, 'password') }"
                  required>
           <div class="error"
                [ngClass]="{'visible': isFieldInvalid(f, 'password')}">
-            <span>Password is required</span>
+            <span *ngIf="registerModel.password === ''">Password is required</span>
+            <span *ngIf="registerModel.password !== ''">Password must contain minimum 8 characters, including letters, digits and following signs !@#$%^&*</span>
           </div>
         </div>
         <div class="page__form--input-group">
