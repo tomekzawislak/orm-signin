@@ -1,0 +1,45 @@
+@import '../../../assets/styles/_variables.scss';
+
+.toast-container {
+    height: 56px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.toast-message {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    color: $white;
+    transform: translateY(-56px);
+    opacity: 0;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    z-index: 1000;
+
+
+    &.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    &.toast-message {
+        &--primary {
+            background-color: $green;
+        }
+
+        &--danger {
+            background-color: $red;
+        }
+    }
+
+    .toast-dismiss {
+        margin-left: auto;
+        text-align: right;
+
+        .btn {
+            background: none;
+            color: $white;
+        }
+    }
+}

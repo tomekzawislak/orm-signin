@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmailPattern, FullNamePattern, PasswordPattern } from '../../constants/form-validation';
+import {ToastMessageService} from '../../services/toast-message.service';
 
 export interface RegisterModel {
   email: string;
@@ -19,17 +20,13 @@ export class SignUpComponent {
   readonly fullNamePattern: RegExp = FullNamePattern;
   readonly passwordPattern: RegExp = PasswordPattern;
 
-  constructor() {
-    this.registerModel = {
-      email: '',
-      password: '',
-      name: '',
-      confirmPassword: ''
-    };
+  constructor(private toastr: ToastMessageService) {
+    this.clearModel();
   }
 
   signUp(): void {
-
+    this.clearModel();
+    this.toastr.showPrimary('Your account has been created');
   }
 
   formInvalid(f: NgForm): boolean {
@@ -38,6 +35,15 @@ export class SignUpComponent {
 
   isFieldInvalid(f: NgForm, fieldName: string): boolean {
     return this.formInvalid(f) && f.controls[fieldName].invalid;
+  }
+
+  private clearModel(): void {
+    this.registerModel = {
+      email: '',
+      password: '',
+      name: '',
+      confirmPassword: ''
+    };
   }
 
 }

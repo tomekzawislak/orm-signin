@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ToastMessageService } from './services/toast-message.service';
+import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ToastMessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
