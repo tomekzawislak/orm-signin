@@ -32,11 +32,12 @@ export class ToastMessageService {
         this.toastMessageSource.next(model);
     }
 
-    showPrimary(text: string): void {
+    showPrimary(text: string, dontClose?: boolean): void {
         const model = new ToastMessageModel({
             visible: true,
             text,
-            toastType: ToastMessageType.Primary
+            toastType: ToastMessageType.Primary,
+            dontClose
         });
 
         this.toastMessageSource.next(model);

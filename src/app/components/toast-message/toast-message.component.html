@@ -1,10 +1,10 @@
-<div class="row toast-container">
-    <div class="col toast-message {{toastType}}" [ngClass]="{'show': toastMessageModel.visible }">
-        <div class="col toast-content">
+<div class="toast-container">
+    <div class="toast-message {{toastType}}" [ngClass]="{'show': toastMessageModel.visible }">
+        <div class="toast-content">
             {{ toastMessageModel.text }}
         </div>
-        <div class="col-1 toast-dismiss">
-            <button class="btn" (click)="close()">X</button>
+        <div class="toast-dismiss">
+            <button class="btn" (click)="close()">&times;</button>
         </div>
     </div>
 </div>

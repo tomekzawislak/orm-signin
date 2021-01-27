@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmailPattern, FullNamePattern, PasswordPattern } from '../../constants/form-validation';
-import {ToastMessageService} from '../../services/toast-message.service';
+import { ToastMessageService } from '../../services/toast-message.service';
 
 export interface RegisterModel {
   email: string;
